@@ -29,11 +29,20 @@ chmod +x organize_screens.sh
 ./organize_screens.sh
 ```
 
-## Format des dossiers
+Options :
 
-Dans le script, la variable `FORMAT` choisit le nom des dossiers :
+| Option | Effet |
+| --- | --- |
+| `-d dossier` | range ce dossier au lieu de celui du script |
+| `-f fr` ou `-f iso` | dossiers en `JJ-MM-AAAA` (défaut) ou `AAAA-MM-JJ` |
+| `-n` | simulation : affiche ce qui serait déplacé, sans rien toucher |
+
+Un fichier déjà présent dans le dossier du jour n'est jamais écrasé, et une date impossible (mois 13, par exemple) laisse le fichier en place.
+
+## Tests
 
 ```bash
-FORMAT="fr"    # JJ-MM-AAAA
-FORMAT="iso"   # AAAA-MM-JJ
+./test/run.sh
 ```
+
+Chaque cas tourne dans un dossier temporaire. La CI lance aussi ShellCheck.
